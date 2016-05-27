@@ -1,25 +1,24 @@
-from abc import ABCMeta, abstractmethod
+from .knowledge_node import KnowledgeNode
+from .model import Model
 
 
-class KnowledgeMap(object, metaclass=ABCMeta):
+class KnowledgeMap(object):
     _root_knowledge_node = None
 
-    @abstractmethod
-    def insert(self, knowledge_node, father_knowledge_node):
-        pass
+    def __init__(self, model: Model):
+        self._model = model
 
-    @abstractmethod
+    def insert(self, knowledge_node: KnowledgeNode):
+        self._model.insert(knowledge_node)
+
     def delete(self, knowledge_node):
         pass
 
-    @abstractmethod
     def update(self, knowledge_node):
         pass
 
-    @abstractmethod
     def find_by_kid(self, knowledge_node_id):
         pass
 
-    @abstractmethod
     def find_by_name(self, knowledge_node_name):
         pass
